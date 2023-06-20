@@ -10,17 +10,12 @@ let dayOfWeekChecker = (a) => {
     return dayNames[day];
 }
 
-let formatedDate = dayOfWeekChecker("2023-06-20");
-console.log(formatedDate)
 
 
 // b.Implement the function to display the day of the week for the current date.
 
-let currentDayChecker = () => {
-    const date = new Date().getDay().toLocaleString();
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    return dayNames[date];
-}
-
-let currentDate = currentDayChecker();
-console.log(currentDate)
+    
+const currentDate = new Date().getDay().toLocaleString();
+let result = dayOfWeekChecker(currentDate);
+// let result = dayOfWeekChecker("2023-06-20");
+console.log(result)
