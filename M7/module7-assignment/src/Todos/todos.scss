@@ -1,12 +1,23 @@
-.Todos{
-    border: 1px solid white;
+.Todos {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+  border-radius: 30px;
+
+  &--input {
     display: flex;
-    flex-direction: column;
-    &--input{
+      flex-direction: row;
+      justify-content: space-between;
+  }
 
+  &--list {
+    &--single-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 15px;
     }
-
-    &--list{
-        
-    }
+  }
 }
