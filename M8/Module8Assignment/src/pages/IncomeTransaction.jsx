@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 
-const IncomeTransaction = () => {
-  const [income, setIncome] = useState([]);
+const IncomeTransaction = (props) => {
+
+	const {income, setIncome , totalIncome, setTotalIncome} = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,31 +11,32 @@ const IncomeTransaction = () => {
       ...income,
       { details: e.target.details.value, amount: e.target.amount.value },
     ]);
-    console.log(income);
+	setTotalIncome(parseInt(totalIncome) + parseInt(e.target.amount.value));
+	e.target.reset();
   };
 
   return (
     <div>
       <Navbar />
       <div className="flex flex-col items-center justify-center mt-20">
-        <h2 className="text-3xl">This is Income page</h2>
+        <h2 className="text-3xl mb-10">Total Income {totalIncome} taka</h2>
         <form className="flex" onSubmit={handleSubmit}>
           <input
             name="details"
             type="text"
             placeholder="Income Details"
-            className="input input-bordered input-warning w-full max-w-xs"
+            className="input input-bordered input-warning w-full m-5 max-w-xs"
           />
           <input
             name="amount"
             type="number"
             placeholder="Amount"
-            className="input input-bordered input-warning w-full max-w-xs"
+            className="input input-bordered input-warning w-full m-5 max-w-xs"
           />
-          <button className="btn btn-info">Add</button>
+          <button className="btn btn-info m-5">Add</button>
         </form>
         <div className="overflow-x-auto mt-50">
-          <table className="table table-zebra">
+          <table className="table table-zebra text-md">
             {/* head */}
             <thead>
               <tr>
@@ -43,8 +45,8 @@ const IncomeTransaction = () => {
               </tr>
             </thead>
             <tbody>
-              {income.map((item) => (
-                <tr index>
+              {income.map((item, index) => (
+                <tr key={index}>
                   <td>{item.details}</td>
                   <td>{item.amount}</td>
                 </tr>
