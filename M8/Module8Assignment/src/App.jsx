@@ -5,16 +5,12 @@ import Homepage from './pages/Homepage.jsx';
 import IncomeTransaction from './pages/IncomeTransaction.jsx';
 import ExpenseTrnsaction from './pages/ExpenseTrnsaction.jsx';
 import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar/Navbar.jsx';
 
-import './App.css';
 
 function App() {
 
   return (
     <div>
-      <h1>Hi there</h1>
-      {/* <Navbar /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />}/>

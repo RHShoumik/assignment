@@ -6,6 +6,7 @@ const Homepage = () => {
     <div>
         <Navbar />
         <h2>This is Home page</h2>
+        <button class="btn w-64 rounded-full">Button</button>
     </div>
   )
 }
