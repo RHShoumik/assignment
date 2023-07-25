@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+
 import Navbar from "../components/Navbar/Navbar";
 
 const IncomeTransaction = (props) => {
-
-	const {income, setIncome , totalIncome, setTotalIncome} = props;
+  const { transaction, setTransaction, totalIncome, setTotalIncome } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIncome([
-      ...income,
-      { details: e.target.details.value, amount: e.target.amount.value },
+    setTransaction([
+      ...transaction,
+      {
+        details: e.target.details.value,
+        amount: e.target.amount.value,
+        type: "income",
+      },
     ]);
-	setTotalIncome(parseInt(totalIncome) + parseInt(e.target.amount.value));
-	e.target.reset();
+    setTotalIncome(parseInt(totalIncome) + parseInt(e.target.amount.value));
+    e.target.reset();
   };
 
   return (
@@ -45,12 +48,14 @@ const IncomeTransaction = (props) => {
               </tr>
             </thead>
             <tbody>
-              {income.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.details}</td>
-                  <td>{item.amount}</td>
-                </tr>
-              ))}
+              {transaction
+                .filter((item) => item.type === "income")
+                .map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.details}</td>
+                    <td>{item.amount}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
